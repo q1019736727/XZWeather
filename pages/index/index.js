@@ -1,7 +1,8 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+var QQMapWX = require('../../utils/qqmap-wx-jssdk.js');
+var qqmapsdk; 
 Page({
   data: {
     motto: 'Hello World',
@@ -11,11 +12,13 @@ Page({
   },
   //事件处理函数
   bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+   
   },
   onLoad: function () {
+    // 腾讯地图实例化API核心类
+    qqmapsdk = new QQMapWX({
+      key: 'FVSBZ-SKL32-SSGUE-CTC7S-KELNE-43FKU'
+    });
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -42,6 +45,77 @@ Page({
         }
       })
     }
+  },
+  onShow:function(){
+    this.getLocation()
+  },
+  // 微信获得经纬度
+  getLocation: function () {
+    let that = this;
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        console.log(res)
+        var latitude = res.latitude
+        var longitude = res.longitude
+        var speed = res.speed
+        var accuracy = res.accuracy;
+        that.getLocal(latitude, longitude)
+      },
+      fail: function (res) {
+        console.log('fail' + JSON.stringify(res))
+      }
+    })
+  },
+  // 腾讯地图sdk获取当前地理位置
+  getLocal: function (latitude, longitude) {
+    let that = this;
+    // let serverUrl = that.globalData.serverUrl
+    qqmapsdk.reverseGeocoder({
+      location: {
+        latitude: latitude,
+        longitude: longitude
+      },
+      success: function (res) {
+        console.log(res);
+        // let province = res.result.ad_info.province
+        let city = res.result.ad_info.city
+        wx.showModal({
+          title: '当前位置',
+          content: res.result.address,
+        })
+        // console.log(province + '-----' + city);
+        // that.setData({
+        //   province: province,
+        //   city: city,
+        //   latitude: latitude,
+        //   longitude: longitude
+        // })
+        wx.request({
+          url: serverUrl + '/wx/ma/getAreaIdByAreaName?areaName=' + city,
+          success(res) {
+            //保存到缓存中
+            let user = that.globalData.user
+            user.cityId = res.data.areaId
+            user.cityName = res.data.areaName
+
+            that.globalData.user = user
+            wx.setStorageSync('user', user)
+
+          },
+          fail(res) {
+            console.log("/wx/ma/getAreaIdByAreaName", res.data)
+          }
+        })
+
+      },
+      fail: function (res) {
+        console.log(res);
+      },
+      complete: function (res) {
+        // console.log(res);
+      }
+    });
   },
   getUserInfo: function(e) {
     console.log(e)
