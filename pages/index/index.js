@@ -8,7 +8,8 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    addressName:''
   },
   //事件处理函数
   bindViewTap: function() {
@@ -55,7 +56,6 @@ Page({
     wx.getLocation({
       type: 'wgs84',
       success: function (res) {
-        console.log(res)
         var latitude = res.latitude
         var longitude = res.longitude
         var speed = res.speed
@@ -70,7 +70,6 @@ Page({
   // 腾讯地图sdk获取当前地理位置
   getLocal: function (latitude, longitude) {
     let that = this;
-    // let serverUrl = that.globalData.serverUrl
     qqmapsdk.reverseGeocoder({
       location: {
         latitude: latitude,
@@ -79,35 +78,10 @@ Page({
       success: function (res) {
         console.log(res);
         // let province = res.result.ad_info.province
-        let city = res.result.ad_info.city
-        wx.showModal({
-          title: '当前位置',
-          content: res.result.address,
+        let ad_info = res.result.ad_info
+        that.setData({
+          addressName: ad_info.district || ad_info.city
         })
-        // console.log(province + '-----' + city);
-        // that.setData({
-        //   province: province,
-        //   city: city,
-        //   latitude: latitude,
-        //   longitude: longitude
-        // })
-        wx.request({
-          url: serverUrl + '/wx/ma/getAreaIdByAreaName?areaName=' + city,
-          success(res) {
-            //保存到缓存中
-            let user = that.globalData.user
-            user.cityId = res.data.areaId
-            user.cityName = res.data.areaName
-
-            that.globalData.user = user
-            wx.setStorageSync('user', user)
-
-          },
-          fail(res) {
-            console.log("/wx/ma/getAreaIdByAreaName", res.data)
-          }
-        })
-
       },
       fail: function (res) {
         console.log(res);
