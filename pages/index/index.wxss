@@ -1,23 +1,26 @@
 /**index.wxss**/
 .container{
-  
+  position:relative;
 }
 .container .weatherTopWrapper{
   width: 100vw;
   height: 100vw;
-  position: relative;
+  position: fixed;
+  left: 0;
+  top: 0;
 }
 .container .weatherTopWrapper > image{
   width: 100%;
   height: 100%;
 }
-.container .weatherTopWrapper>text{
+.container .weatherTopWrapper .location{
   position: absolute;
-  left: 10px;
-  top: 50px;
+  font-size: 30rpx;
+  width: 100%;
+  top: 20rpx;
+  text-align: center;
   color: white;
 }
-.container .weatherTopWrapper>icon{
-  color: #5FB7EB;
-  font-size: 2rem;
+.container .weatherTopWrapper .location icon{
+  margin-left: 10rpx;
 }

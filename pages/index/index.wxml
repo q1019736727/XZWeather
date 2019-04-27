@@ -1,9 +1,14 @@
 <!--index.wxml-->
 <view class="container">
   <view class='weatherTopWrapper'>
-    <image src='../../imgs/warm.png'></image>
+  <image src='../../imgs/rain.png'></image>
+  <view class='location'>
     <text>{{addressName}}</text>
-    <icon class='iconfont icon-tianqi-baoyu'></icon>
-    
+    <icon wx:if='{{addressName}}' class='iconfont icon-location'></icon>
+  </view>
+  <view class='temperatureWrapper'>
+    <text>{{currentWeather.tem.toString}}</text>
+    <text decode='true'>℃</text>
+  </view>
   </view>
 </view>

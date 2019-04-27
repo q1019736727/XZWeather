@@ -1,15 +1,19 @@
 //index.js
 //获取应用实例
 const app = getApp()
-var QQMapWX = require('../../utils/qqmap-wx-jssdk.js');
-var qqmapsdk; 
+import loactionTemp from '../../utils/locationTemp.js'
+let QQMapWX = require('../../utils/qqmap-wx-jssdk.js');
+let qqmapsdk; 
 Page({
   data: {
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    addressName:''
+    addressName:'',
+    temperature:'',
+    currentWeatherList:[],
+    currentWeather:{}
   },
   //事件处理函数
   bindViewTap: function() {
@@ -48,48 +52,19 @@ Page({
     }
   },
   onShow:function(){
-    this.getLocation()
-  },
-  // 微信获得经纬度
-  getLocation: function () {
-    let that = this;
-    wx.getLocation({
-      type: 'wgs84',
-      success: function (res) {
-        var latitude = res.latitude
-        var longitude = res.longitude
-        var speed = res.speed
-        var accuracy = res.accuracy;
-        that.getLocal(latitude, longitude)
-      },
-      fail: function (res) {
-        console.log('fail' + JSON.stringify(res))
-      }
-    })
-  },
-  // 腾讯地图sdk获取当前地理位置
-  getLocal: function (latitude, longitude) {
-    let that = this;
-    qqmapsdk.reverseGeocoder({
-      location: {
-        latitude: latitude,
-        longitude: longitude
-      },
-      success: function (res) {
-        console.log(res);
-        // let province = res.result.ad_info.province
-        let ad_info = res.result.ad_info
-        that.setData({
-          addressName: ad_info.district || ad_info.city
+    //获取位置和天气情况
+    loactionTemp.getLocation(qqmapsdk).then(addressName=>{
+      loactionTemp.getTemp(addressName).then(res=>{
+        console.log(res)
+        this.setData({
+          currentWeatherList:res.data.data,
+          currentWeather:res.data.data[0]
         })
-      },
-      fail: function (res) {
-        console.log(res);
-      },
-      complete: function (res) {
-        // console.log(res);
-      }
-    });
+      })
+      this.setData({
+        addressName
+      })
+    })
   },
   getUserInfo: function(e) {
     console.log(e)
