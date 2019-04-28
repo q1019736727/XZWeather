@@ -8,6 +8,7 @@
   position: fixed;
   left: 0;
   top: 0;
+  z-index: -1;
 }
 .container .weatherTopWrapper > image{
   width: 100%;
@@ -23,4 +24,37 @@
 }
 .container .weatherTopWrapper .location icon{
   margin-left: 10rpx;
+}
+.container .weatherTopWrapper .temperatureWrapper{
+  position: absolute;
+  top: 100rpx;
+  left: 40rpx;
+  color: white;
+}
+.container .weatherTopWrapper .temperatureWrapper text:nth-child(1){
+  font-size: 80rpx;
+  font-weight: 500;
+}
+.container .weatherTopWrapper .temperatureWrapper text:nth-child(2){
+  font-size: 32rpx;
+  margin-left: 10rpx;
+}
+.container .weatherTopWrapper .todayWeather{
+  position: absolute;
+  top: 200rpx;
+  left: 40rpx;
+  color: white;
+  font-size: 28rpx;
+}
+.container .weatherTopWrapper .todayWeather icon{
+  margin-left: 10rpx;
+}
+/*最近几小时温度部分*/
+.container .nearTemp{
+  width: calc(100vw - 50rpx);
+  height: 350rpx;
+  background-color: white;
+  margin: calc(100vw - 100rpx) auto;
+  box-shadow: 1px 1px 6px #e9eaeb;
+  border-radius: 6px;
 }

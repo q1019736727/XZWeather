@@ -14,5 +14,6 @@
     "scope.userLocation": {
       "desc": "小程序需要获取你的位置"
     }
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

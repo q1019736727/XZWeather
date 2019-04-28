@@ -1,14 +1,25 @@
 <!--index.wxml-->
+<!--过滤器-->
+<wxs src='../../tools/temperature.wxs' module="filter"></wxs>
+
 <view class="container">
   <view class='weatherTopWrapper'>
-  <image src='../../imgs/rain.png'></image>
-  <view class='location'>
-    <text>{{addressName}}</text>
-    <icon wx:if='{{addressName}}' class='iconfont icon-location'></icon>
+    <image src='../../imgs/rain.png'></image>
+    <view class='location'>
+      <text>{{addressName}}</text>
+      <icon wx:if='{{addressName}}' class='iconfont icon-location'></icon>
+    </view>
+    <view class='temperatureWrapper'>
+      <text>{{filter.filterTemp(currentWeather.tem)}}</text>
+      <text wx:if='{{filter.filterTemp(currentWeather.tem)}}'>℃</text>
+    </view>
+    <view class='todayWeather'>
+      <text decode='true'>{{currentWeather.wea}}&nbsp;&nbsp;{{filter.filterTemp(currentWeather.tem2)}}/{{currentWeather.tem1}}</text>
+      <icon class='iconfont .icon-tianqi-baoyu'></icon>
+    </view>
   </view>
-  <view class='temperatureWrapper'>
-    <text>{{currentWeather.tem.toString}}</text>
-    <text decode='true'>℃</text>
-  </view>
+  <view class='nearTemp'>
+    <canvas class='tempratureCanvas' style='width:100%;height:100%' canvas-id='tempratureCanvas'>
+    </canvas>
   </view>
 </view>
