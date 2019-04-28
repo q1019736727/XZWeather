@@ -18,8 +18,8 @@
       <icon class='iconfont .icon-tianqi-baoyu'></icon>
     </view>
   </view>
-  <view class='nearTemp'>
-    <canvas class='tempratureCanvas' style='width:100%;height:100%' canvas-id='tempratureCanvas'>
-    </canvas>
+  <view class='nearTempCard'>
+    <text>未来温度</text>
+    <canvas canvas-id="canvas" id="canvas"></canvas>
   </view>
 </view>

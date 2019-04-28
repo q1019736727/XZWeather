@@ -1,8 +1,10 @@
 /**index.wxss**/
-.container{
-  position:relative;
+
+.container {
+  position: relative;
 }
-.container .weatherTopWrapper{
+
+.container .weatherTopWrapper {
   width: 100vw;
   height: 100vw;
   position: fixed;
@@ -10,11 +12,13 @@
   top: 0;
   z-index: -1;
 }
-.container .weatherTopWrapper > image{
+
+.container .weatherTopWrapper > image {
   width: 100%;
   height: 100%;
 }
-.container .weatherTopWrapper .location{
+
+.container .weatherTopWrapper .location {
   position: absolute;
   font-size: 30rpx;
   width: 100%;
@@ -22,39 +26,62 @@
   text-align: center;
   color: white;
 }
-.container .weatherTopWrapper .location icon{
+
+.container .weatherTopWrapper .location icon {
   margin-left: 10rpx;
 }
-.container .weatherTopWrapper .temperatureWrapper{
+
+.container .weatherTopWrapper .temperatureWrapper {
   position: absolute;
   top: 100rpx;
   left: 40rpx;
   color: white;
 }
-.container .weatherTopWrapper .temperatureWrapper text:nth-child(1){
+
+.container .weatherTopWrapper .temperatureWrapper text:nth-child(1) {
   font-size: 80rpx;
   font-weight: 500;
 }
-.container .weatherTopWrapper .temperatureWrapper text:nth-child(2){
+
+.container .weatherTopWrapper .temperatureWrapper text:nth-child(2) {
   font-size: 32rpx;
   margin-left: 10rpx;
 }
-.container .weatherTopWrapper .todayWeather{
+
+.container .weatherTopWrapper .todayWeather {
   position: absolute;
   top: 200rpx;
   left: 40rpx;
   color: white;
   font-size: 28rpx;
 }
-.container .weatherTopWrapper .todayWeather icon{
+
+.container .weatherTopWrapper .todayWeather icon {
   margin-left: 10rpx;
 }
+
 /*最近几小时温度部分*/
-.container .nearTemp{
-  width: calc(100vw - 50rpx);
-  height: 350rpx;
-  background-color: white;
+
+.container .nearTempCard {
+  width: calc(100vw - 40px);
+  background: white;
   margin: calc(100vw - 100rpx) auto;
   box-shadow: 1px 1px 6px #e9eaeb;
   border-radius: 6px;
+}
+
+.container .nearTempCard > text {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 30px;
+  margin-left: 10px;
+  color: #1a1a1a;
+}
+
+.container .nearTempCard #canvas {
+  height: 110px;
+  width: calc(100vw - 40px);
+  background-color: #fff;
+  margin-top: 20px;
+  box-sizing: border-box;
 }
