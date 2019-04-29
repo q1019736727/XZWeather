@@ -1,3 +1,7 @@
+
+// import matchWea from '../weatherData/matchWeather.js'
+// const matchWea = require('../weatherData/matchWeather.js') 
+
 var filterTemp = function(temp) {
   if (temp) {
     temp = (temp + '').replace('℃', '')
@@ -6,11 +10,19 @@ var filterTemp = function(temp) {
     return ''
   }
 }
+
 var dateFilter = function(date) {
   date = date.substring(5,10)
   return date
 }
+
+var iconFilter = function(name){
+  // matchWea(name,()=>{
+    
+  // })
+}
 module.exports = {
   filterTemp: filterTemp,
-  dateFilter: dateFilter
+  dateFilter: dateFilter,
+  iconFilter: iconFilter
 }

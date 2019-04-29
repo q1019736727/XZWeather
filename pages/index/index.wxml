@@ -26,14 +26,14 @@
       <text>未来几小时温度</text>
       <canvas canvas-id="canvas" id="canvas"></canvas>
       <view class='bottomtemp'>
-        <label wx:for='{{currentTimeList}}'>
+        <label wx:for='{{currentTimeList}}' wx:key='idx'>
           {{item}}
         </label>
       </view>
     </view>
     <view class='weekTemp'>
       <label>最近7日天气</label>
-      <view class='weekTemp-item' wx:for='{{currentWeatherList}}'>
+      <view class='weekTemp-item' wx:for='{{currentWeatherList}}' wx:key='item.day'>
         <view class='item-left'>
           <text>{{item.wea}}</text>
           <text>{{filter.filterTemp(item.tem1)}}/{{item.tem2}}</text>
@@ -43,5 +43,4 @@
       </view>
     </view>
   </view>
-
 </view>
