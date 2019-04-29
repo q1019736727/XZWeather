@@ -13,8 +13,8 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     addressName: '',
     temperature: '',
-    currentWeatherList: [],
-    currentWeather: {},
+    currentWeatherList: null,
+    currentWeather: null,
     currentTimeList: []
   },
   //事件处理函数
@@ -23,7 +23,6 @@ Page({
   },
   onLoad: function() {
     getApp().setWatcher(this.data, this.watch); // 设置监听器
-
     // 腾讯地图实例化API核心类
     qqmapsdk = new QQMapWX({
       key: 'FVSBZ-SKL32-SSGUE-CTC7S-KELNE-43FKU'

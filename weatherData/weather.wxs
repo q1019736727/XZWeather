@@ -2,7 +2,7 @@
 /******************  不常见的xx转xx以后面的天气为准(例如 沙尘暴转浮尘) **********************/
 
 //晴
-const qing = {
+var qing = {
   list: [
     "晴",
     "阴转晴",
@@ -27,10 +27,10 @@ const qing = {
     "大雨转晴",
     "小雪转晴",
     "阵雪转晴",
-  ], icon: 'icon-tianqi-qing', color:'#f99900'}
+  ], icon: 'icon-tianqi-qing', color:'#f99900',bgImg:'clod.png'}
 
 //阴
-const yin = {
+var yin = {
   list: [
     "阴",
     "多云转阴",
@@ -56,10 +56,10 @@ const yin = {
     "暴雪转阴",
     "冻雨转阴",
     "中到大雨转阴",
-  ], icon: 'icon-tianqi-yintian', color: '#dddddd'}
+  ], icon: 'icon-tianqi-yintian', color: '#dddddd', bgImg: 'cloud.png'}
 
 //多云 
-const cloud = {
+var cloud = {
   list: [
     "多云",
     "晴转多云",
@@ -88,9 +88,9 @@ const cloud = {
     "小雪转多云",
     "小雨转多云",
     "阵雨转多云",
-  ], icon: 'icon-tianqi-duoyun', color: '#dddddd'}
+  ], icon: 'icon-tianqi-duoyun', color: '#dddddd', bgImg: 'cloud.png'}
 //中小雨
-const smallRain = {
+var smallRain = {
   list: [
     "小雨",
     "中雨",
@@ -167,10 +167,10 @@ const smallRain = {
     "暴雨转阵雨",
     "雾转阵雨",
     "大到暴雨转阵雨",
-  ], icon: 'icon-tianqi-zhongyu', color: '#76d8fd'}
+  ], icon: 'icon-tianqi-zhongyu', color: '#76d8fd', bgImg: 'rain.png'}
   
 //大雨暴雨
-const bigRain = {
+var bigRain = {
   list: [
     "大雨",
     "暴雨",
@@ -228,10 +228,10 @@ const bigRain = {
     "中到大雨转大到暴雨",
     "大到暴雨",
     "阵雨转大到暴雨",
-  ], icon: 'icon-tianqi-baoyu', color: '#6590f8'}
+  ], icon: 'icon-tianqi-baoyu', color: '#6590f8', bgImg: 'rain.png'}
 
 //中小雪
-const smallSnow = {
+var smallSnow = {
   list: [
     "小雪",
     "中雪",
@@ -298,10 +298,10 @@ const smallSnow = {
     "小到中雪",
     "晴转阵雪",
     "晴转小雪"
-  ], icon: 'icon-tianqi-zhongxue', color: '#b5b3d5'}
+  ], icon: 'icon-tianqi-zhongxue', color: '#b5b3d5', bgImg: 'rain.png'}
 
 //大暴雪
-const bigSnow = {
+var bigSnow = {
   list: [
     "大雪",
     "阵雪",
@@ -342,10 +342,10 @@ const bigSnow = {
     "雨夹雪转大到暴雪",
     "中雨转大到暴雪",
     "小雨转大到暴雪",
-  ], icon: 'icon-tianqi-daxue', color: '#9376c4'}
+  ], icon: 'icon-tianqi-daxue', color: '#9376c4', bgImg: 'rain.png'}
 
 //雨夹雪
-const rainAndSnow = {
+var rainAndSnow = {
   list: [
     "雨夹雪",
     "多云转雨夹雪",
@@ -376,10 +376,10 @@ const rainAndSnow = {
     "小雪转冻雨",
     "冻雨",
 
-  ], icon: 'icon-tianqi-yujiaxue', color: '#c8d1d4'}
+  ], icon: 'icon-tianqi-yujiaxue', color: '#c8d1d4', bgImg: 'rain.png'}
 
 //霾/沙尘暴/雾
-const maidistwu = {
+var maidistwu = {
   list: [
     "雾",
     "扬沙",
@@ -417,10 +417,12 @@ const maidistwu = {
     "大雪转雾",
     "阴转扬沙",
     "小雪转扬沙",
-  ], icon: 'icon-tianqi-shachen', color: '#f1c870'}
+  ], icon: 'icon-tianqi-shachen', color: '#f1c870', bgImg: 'warm.png'}
 
-const TotalWeather = [
+var TotalWeather = [
   qing, yin, cloud, smallRain, bigRain, smallSnow, bigSnow, rainAndSnow, maidistwu
 ]
 
-export default TotalWeather
+module.exports = {
+  TotalWeather: TotalWeather
+}

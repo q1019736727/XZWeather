@@ -29,6 +29,7 @@
 
 .container .weatherTopWrapper .location icon {
   margin-left: 10rpx;
+  font-size: 30rpx;
 }
 
 .container .weatherTopWrapper .temperatureWrapper {
@@ -58,13 +59,15 @@
 
 .container .weatherTopWrapper .todayWeather icon {
   margin-left: 10rpx;
+  margin-top: 40rpx;
+  font-size: 70rpx;
 }
 
 /*下半部分*/
 
 .container .bottomPage {
   width: 100%;
-  margin-top: calc(100vw - 100rpx);
+  margin-top: 80vw;
 }
 
 /*最近几小时温度部分*/

@@ -1,10 +1,11 @@
 <!--index.wxml-->
+
 <!--过滤器-->
 <wxs src='../../tools/indexFilter.wxs' module="filter"></wxs>
 
 <view class="container">
   <view class='weatherTopWrapper'>
-    <image src='../../imgs/rain.png'></image>
+    <image src='../../imgs/{{filter.bgimageFilter(currentWeather.wea)}}'></image>
     <view class='location'>
       <text>{{addressName}}</text>
       <icon wx:if='{{addressName}}' class='iconfont icon-location'></icon>
@@ -17,13 +18,13 @@
       <text decode='true'>
         {{currentWeather.wea}}&nbsp;&nbsp;{{filter.filterTemp(currentWeather.tem1)}}/{{currentWeather.tem2}} 
       </text>
-      <icon class='iconfont .icon-tianqi-baoyu'></icon>
+      <icon class='iconfont {{filter.iconFilter(currentWeather.wea)}}'></icon>
     </view>
   </view>
 
   <view class='bottomPage'>
     <view class='nearTempCard'>
-      <text>未来几小时温度</text>
+      <text wx:if='{{currentWeather}}'>未来几小时温度</text>
       <canvas canvas-id="canvas" id="canvas"></canvas>
       <view class='bottomtemp'>
         <label wx:for='{{currentTimeList}}' wx:key='idx'>
@@ -32,12 +33,12 @@
       </view>
     </view>
     <view class='weekTemp'>
-      <label>最近7日天气</label>
+      <label wx:if='{{currentWeatherList}}'>最近7日天气</label>
       <view class='weekTemp-item' wx:for='{{currentWeatherList}}' wx:key='item.day'>
         <view class='item-left'>
           <text>{{item.wea}}</text>
           <text>{{filter.filterTemp(item.tem1)}}/{{item.tem2}}</text>
-          <icon class='iconfont icon-tianqi-leiyu'></icon>
+          <icon class='iconfont {{filter.iconFilter(item.wea)}}' style="color:{{filter.colorFilter(item.wea)}}"></icon>
         </view>
         <text class='item-right'>{{filter.dateFilter(item.date)}}</text>
       </view>

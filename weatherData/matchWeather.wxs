@@ -1,0 +1,17 @@
+
+/*匹配天气图标以及颜色*/
+var weatherList = require('./weather.wxs')  
+var dataList = weatherList.TotalWeather
+
+var weatherMatch = function(name,fn){
+  dataList.forEach(function(item){
+    if (item.list.indexOf(name) != -1) {
+      fn(item)
+      return
+    }
+  })
+}
+
+module.exports = {
+  weatherMatch: weatherMatch
+}
