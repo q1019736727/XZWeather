@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <!--过滤器-->
-<wxs src='../../tools/temperature.wxs' module="filter"></wxs>
+<wxs src='../../tools/indexFilter.wxs' module="filter"></wxs>
 
 <view class="container">
   <view class='weatherTopWrapper'>
@@ -14,12 +14,34 @@
       <text wx:if='{{filter.filterTemp(currentWeather.tem)}}'>℃</text>
     </view>
     <view class='todayWeather'>
-      <text decode='true'>{{currentWeather.wea}}&nbsp;&nbsp;{{filter.filterTemp(currentWeather.tem2)}}/{{currentWeather.tem1}}</text>
+      <text decode='true'>
+        {{currentWeather.wea}}&nbsp;&nbsp;{{filter.filterTemp(currentWeather.tem1)}}/{{currentWeather.tem2}} 
+      </text>
       <icon class='iconfont .icon-tianqi-baoyu'></icon>
     </view>
   </view>
-  <view class='nearTempCard'>
-    <text>未来温度</text>
-    <canvas canvas-id="canvas" id="canvas"></canvas>
+
+  <view class='bottomPage'>
+    <view class='nearTempCard'>
+      <text>未来几小时温度</text>
+      <canvas canvas-id="canvas" id="canvas"></canvas>
+      <view class='bottomtemp'>
+        <label wx:for='{{currentTimeList}}'>
+          {{item}}
+        </label>
+      </view>
+    </view>
+    <view class='weekTemp'>
+      <label>最近7日天气</label>
+      <view class='weekTemp-item' wx:for='{{currentWeatherList}}'>
+        <view class='item-left'>
+          <text>{{item.wea}}</text>
+          <text>{{filter.filterTemp(item.tem1)}}/{{item.tem2}}</text>
+          <icon class='iconfont icon-tianqi-leiyu'></icon>
+        </view>
+        <text class='item-right'>{{filter.dateFilter(item.date)}}</text>
+      </view>
+    </view>
   </view>
+
 </view>

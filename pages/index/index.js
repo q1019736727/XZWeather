@@ -15,6 +15,7 @@ Page({
     temperature: '',
     currentWeatherList: [],
     currentWeather: {},
+    currentTimeList: []
   },
   //事件处理函数
   bindViewTap: function() {
@@ -59,9 +60,15 @@ Page({
     loactionTemp.getLocation(qqmapsdk).then(addressName => {
       loactionTemp.getTemp(addressName).then(res => {
         console.log(res)
+        let timeL = (res.data.data[0]).hours.map(res=>{
+          let time = res.day.slice(3,6)
+          return time
+        })
+        timeL = timeL.splice(0,6)
         this.setData({
           currentWeatherList: res.data.data,
-          currentWeather: res.data.data[0]
+          currentWeather: res.data.data[0],
+          currentTimeList: timeL
         })
       })
       this.setData({
@@ -79,10 +86,10 @@ Page({
     })
   },
   //监听数据变化
-  watch:{
-    currentWeather:function(newValue){
+  watch: {
+    currentWeather: function(newValue) {
       const query = wx.createSelectorQuery()
-      query.select('#canvas').boundingClientRect(function (res) {
+      query.select('#canvas').boundingClientRect(function(res) {
         //绘制温度K线图
         drawK(res.width, newValue)
       }).exec()

@@ -1,0 +1,16 @@
+var filterTemp = function(temp) {
+  if (temp) {
+    temp = (temp + '').replace('℃', '')
+    return temp
+  } else {
+    return ''
+  }
+}
+var dateFilter = function(date) {
+  date = date.substring(5,10)
+  return date
+}
+module.exports = {
+  filterTemp: filterTemp,
+  dateFilter: dateFilter
+}
