@@ -27,7 +27,7 @@ var qing = {
     "大雨转晴",
     "小雪转晴",
     "阵雪转晴",
-  ], icon: 'icon-tianqi-qing', color:'#f99900',bgImg:'clod.png'}
+  ], icon: 'icon-tianqi-qing', color:'#f99900',bgImg:'qing.png'}
 
 //阴
 var yin = {
@@ -56,7 +56,7 @@ var yin = {
     "暴雪转阴",
     "冻雨转阴",
     "中到大雨转阴",
-  ], icon: 'icon-tianqi-yintian', color: '#dddddd', bgImg: 'cloud.png'}
+  ], icon: 'icon-tianqi-yintian', color: '#dddddd', bgImg: 'clod.png'}
 
 //多云 
 var cloud = {
@@ -88,7 +88,7 @@ var cloud = {
     "小雪转多云",
     "小雨转多云",
     "阵雨转多云",
-  ], icon: 'icon-tianqi-duoyun', color: '#dddddd', bgImg: 'cloud.png'}
+  ], icon: 'icon-tianqi-duoyun', color: '#dddddd', bgImg: 'clod.png'}
 //中小雨
 var smallRain = {
   list: [
@@ -228,7 +228,7 @@ var bigRain = {
     "中到大雨转大到暴雨",
     "大到暴雨",
     "阵雨转大到暴雨",
-  ], icon: 'icon-tianqi-baoyu', color: '#6590f8', bgImg: 'rain.png'}
+  ], icon: 'icon-tianqi-baoyu', color: '#6590f8', bgImg: 'baoyu.png'}
 
 //中小雪
 var smallSnow = {
@@ -298,7 +298,7 @@ var smallSnow = {
     "小到中雪",
     "晴转阵雪",
     "晴转小雪"
-  ], icon: 'icon-tianqi-zhongxue', color: '#b5b3d5', bgImg: 'rain.png'}
+  ], icon: 'icon-tianqi-zhongxue', color: '#b5b3d5', bgImg: 'snow.png'}
 
 //大暴雪
 var bigSnow = {
@@ -342,7 +342,7 @@ var bigSnow = {
     "雨夹雪转大到暴雪",
     "中雨转大到暴雪",
     "小雨转大到暴雪",
-  ], icon: 'icon-tianqi-daxue', color: '#9376c4', bgImg: 'rain.png'}
+  ], icon: 'icon-tianqi-daxue', color: '#9376c4', bgImg: 'snow.png'}
 
 //雨夹雪
 var rainAndSnow = {
@@ -376,7 +376,7 @@ var rainAndSnow = {
     "小雪转冻雨",
     "冻雨",
 
-  ], icon: 'icon-tianqi-yujiaxue', color: '#c8d1d4', bgImg: 'rain.png'}
+  ], icon: 'icon-tianqi-yujiaxue', color: '#c8d1d4', bgImg: 'snow.png'}
 
 //霾/沙尘暴/雾
 var maidistwu = {

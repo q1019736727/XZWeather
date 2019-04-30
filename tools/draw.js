@@ -13,6 +13,7 @@ const DrawK = function(canvasWidth, tempData) {
 
   ctx.beginPath();
   ctx.setLineWidth(1)
+  setDefaultColor(ctx, tempArr[0])
   ctx.moveTo(20, 45)
   ctx.lineTo(40, calcTemp(tempArr[0], tempArr) + 20)
   ctx.stroke();

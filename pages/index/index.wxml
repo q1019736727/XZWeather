@@ -7,8 +7,12 @@
   <view class='weatherTopWrapper'>
     <image src='../../imgs/{{filter.bgimageFilter(currentWeather.wea)}}'></image>
     <view class='location'>
-      <text>{{addressName}}</text>
-      <icon wx:if='{{addressName}}' class='iconfont icon-location'></icon>
+      <icon bindtap='goCityList' class='iconfont icon-category'></icon>
+      <view>
+        <text>{{addressName}}</text>
+        <icon class='locationIcon' wx:if='{{addressName}}' class='iconfont icon-location'></icon>
+      </view>
+      <icon id='refresh' bindtap='cliclRefresh' class='iconfont icon-8 {{isLoading ? "active":""}}'></icon>
     </view>
     <view class='temperatureWrapper'>
       <text>{{filter.filterTemp(currentWeather.tem)}}</text>
@@ -18,8 +22,9 @@
       <text decode='true'>
         {{currentWeather.wea}}&nbsp;&nbsp;{{filter.filterTemp(currentWeather.tem1)}}/{{currentWeather.tem2}} 
       </text>
-      <icon class='iconfont {{filter.iconFilter(currentWeather.wea)}}'></icon>
+      <text>{{currentWeather.date}}</text>
     </view>
+    <icon class='iconfont {{filter.iconFilterActive(currentWeather.wea)}}'></icon>
   </view>
 
   <view class='bottomPage'>

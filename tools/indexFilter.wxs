@@ -26,6 +26,18 @@ var iconFilter = function(name){
   return iconName || 'icon-tianqi-yintian'
 }
 
+//是否有动画筛选
+var iconFilterActive = function (name) {
+  var iconName
+  match(name, function (item) {
+    iconName = item.icon
+  })
+  if (iconName === 'icon-tianqi-qing'){//如果是晴天就让太阳旋转
+    return iconName + ' active'
+  }
+  return (iconName || 'icon-tianqi-yintian') + ' shake'//其他就摇动
+}
+
 //icon颜色
 var colorFilter = function(name){
   var colorName
@@ -48,5 +60,6 @@ module.exports = {
   dateFilter: dateFilter,
   iconFilter: iconFilter,
   colorFilter: colorFilter,
-  bgimageFilter: bgimageFilter
+  bgimageFilter: bgimageFilter,
+  iconFilterActive: iconFilterActive
 }

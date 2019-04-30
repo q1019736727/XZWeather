@@ -15,7 +15,8 @@ Page({
     temperature: '',
     currentWeatherList: null,
     currentWeather: null,
-    currentTimeList: []
+    currentTimeList: [],
+    isLoading: false //是否在获取位置
   },
   //事件处理函数
   bindViewTap: function() {
@@ -54,16 +55,36 @@ Page({
       })
     }
   },
+  cliclRefresh: function() {
+    if (!this.data.isLoading) {
+      this.getAddressWeather()
+    }
+  },
+  goCityList: function() {
+    wx.showToast({
+      title: '该功能正在开发中...',
+      icon:'none'
+    })
+  },
   onShow: function() {
+    this.getAddressWeather()
+  },
+  getAddressWeather() {
+    this.setData({
+      isLoading: true
+    })
     //获取位置和天气情况
     loactionTemp.getLocation(qqmapsdk).then(addressName => {
       loactionTemp.getTemp(addressName).then(res => {
         console.log(res)
-        let timeL = (res.data.data[0]).hours.map(res=>{
-          let time = res.day.slice(3,6)
+        this.setData({
+          isLoading: false
+        })
+        let timeL = (res.data.data[0]).hours.map(res => {
+          let time = res.day.slice(3, 6)
           return time
         })
-        timeL = timeL.splice(0,6)
+        timeL = timeL.splice(0, 6)
         this.setData({
           currentWeatherList: res.data.data,
           currentWeather: res.data.data[0],
@@ -74,7 +95,6 @@ Page({
         addressName
       })
     })
-
   },
   getUserInfo: function(e) {
     console.log(e)

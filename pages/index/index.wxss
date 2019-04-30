@@ -1,5 +1,121 @@
 /**index.wxss**/
 
+@keyframes shake {
+  2% {
+    transform: translate(3.5px, -4.5px)rotate(-0.5deg);
+  }
+
+  6% {
+    transform: translate(4.5px, 4.5px)rotate(1.5deg);
+  }
+
+  10% {
+    transform: translate(3.5px, 5.5px)rotate(0.5deg);
+  }
+
+  14% {
+    transform: translate(3.5px, 3.5px)rotate(0.5deg);
+  }
+
+  18% {
+    transform: translate(3.5px, 3.5px)rotate(1.5deg);
+  }
+
+  22% {
+    transform: translate(3.5px, -4.5px)rotate(1.5deg);
+  }
+
+  26% {
+    transform: translate(4.5px, 3.5px)rotate(1.5deg);
+  }
+
+  30% {
+    transform: translate(4.5px, -3.5px)rotate(-0.5deg);
+  }
+
+  34% {
+    transform: translate(5.5px, 5.5px)rotate(-0.5deg);
+  }
+
+  38% {
+    transform: translate(5.5px, -3.5px)rotate(-0.5deg);
+  }
+
+  42% {
+    transform: translate(-4.5px, 5.5px)rotate(0.5deg);
+  }
+
+  46% {
+    transform: translate(4.5px, -3.5px)rotate(-0.5deg);
+  }
+
+  50% {
+    transform: translate(-4.5px, 4.5px)rotate(0.5deg);
+  }
+
+  54% {
+    transform: translate(-4.5px, 4.5px)rotate(0.5deg);
+  }
+
+  58% {
+    transform: translate(5.5px, 5.5px)rotate(0.5deg);
+  }
+
+  62% {
+    transform: translate(-4.5px, 3.5px)rotate(1.5deg);
+  }
+
+  66% {
+    transform: translate(3.5px, 5.5px)rotate(1.5deg);
+  }
+
+  70% {
+    transform: translate(5.5px, 5.5px)rotate(0.5deg);
+  }
+
+  74% {
+    transform: translate(-4.5px, 5.5px)rotate(1.5deg);
+  }
+
+  78% {
+    transform: translate(-4.5px, 5.5px)rotate(0.5deg);
+  }
+
+  82% {
+    transform: translate(-4.5px, 3.5px)rotate(-0.5deg);
+  }
+
+  86% {
+    transform: translate(5.5px, 4.5px)rotate(0.5deg);
+  }
+
+  90% {
+    transform: translate(-4.5px, -3.5px)rotate(-0.5deg);
+  }
+
+  94% {
+    transform: translate(3.5px, 3.5px)rotate(-0.5deg);
+  }
+
+  98% {
+    transform: translate(-4.5px, -4.5px)rotate(-0.5deg);
+  }
+
+  0%, 100% {
+    transform: translate(0, 0)rotate(0);
+  }
+}
+
+@keyframes circle {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .container {
   position: relative;
 }
@@ -22,19 +138,37 @@
   position: absolute;
   font-size: 30rpx;
   width: 100%;
-  top: 20rpx;
-  text-align: center;
+  top: 30rpx;
+  /* text-align: center; */
   color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.container .weatherTopWrapper .location icon {
+.container .weatherTopWrapper .location icon:nth-child(1) {
+  margin-left: 40rpx;
+  font-size: 40rpx;
+}
+
+.container .weatherTopWrapper .location icon:nth-child(3) {
+  margin-right: 50rpx;
+  font-size: 40rpx;
+}
+
+.container .weatherTopWrapper .location icon:nth-child(3).active {
+  animation: circle 1s linear infinite;
+  color: gray;
+}
+
+.container .weatherTopWrapper .location .locationIcon {
   margin-left: 10rpx;
   font-size: 30rpx;
 }
 
 .container .weatherTopWrapper .temperatureWrapper {
   position: absolute;
-  top: 100rpx;
+  top: 140rpx;
   left: 40rpx;
   color: white;
 }
@@ -51,23 +185,42 @@
 
 .container .weatherTopWrapper .todayWeather {
   position: absolute;
-  top: 200rpx;
+  top: 250rpx;
   left: 40rpx;
   color: white;
   font-size: 28rpx;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
 }
 
-.container .weatherTopWrapper .todayWeather icon {
-  margin-left: 10rpx;
-  margin-top: 40rpx;
-  font-size: 70rpx;
+.container .weatherTopWrapper .todayWeather text:nth-child(2) {
+  margin-top: 15rpx;
+}
+
+.container .weatherTopWrapper > icon {
+  position: absolute;
+  top: 180rpx;
+  right: 60rpx;
+  margin-right: 10rpx;
+  font-size: 100rpx;
+  color: white;
+}
+
+.container .weatherTopWrapper > icon.active {
+  animation: circle 5s linear infinite;
+}
+
+.container .weatherTopWrapper > icon.shake {
+  animation: shake 20s linear infinite;
 }
 
 /*下半部分*/
 
 .container .bottomPage {
   width: 100%;
-  margin-top: 80vw;
+  margin-top: 90vw;
 }
 
 /*最近几小时温度部分*/
