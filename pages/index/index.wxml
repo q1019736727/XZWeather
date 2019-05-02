@@ -48,5 +48,7 @@
         <text class='item-right'>{{filter.dateFilter(item.date)}}</text>
       </view>
     </view>
+    <view class=''>
+    </view>
   </view>
 </view>
