@@ -1,4 +1,3 @@
-
 /* wxs里面无法使用箭头函数 */
 var matchWea = require('../weatherData/matchWeather.wxs')
 var match = matchWea.weatherMatch
@@ -13,53 +12,102 @@ var filterTemp = function(temp) {
 }
 
 var dateFilter = function(date) {
-  date = date.substring(5,10)
+  date = date.substring(5, 10)
   return date
 }
 
 //icon
-var iconFilter = function(name){
+var iconFilter = function(name) {
   var iconName
-  match(name,function(item){
+  match(name, function(item) {
     iconName = item.icon
   })
   return iconName || 'icon-tianqi-yintian'
 }
 
 //是否有动画筛选
-var iconFilterActive = function (name) {
+var iconFilterActive = function(name) {
   var iconName
-  match(name, function (item) {
+  match(name, function(item) {
     iconName = item.icon
   })
-  if (iconName === 'icon-tianqi-qing'){//如果是晴天就让太阳旋转
+  if (iconName === 'icon-tianqi-qing') { //如果是晴天就让太阳旋转
     return iconName + ' active'
   }
-  return (iconName || 'icon-tianqi-yintian') + ' shake'//其他就摇动
+  return (iconName || 'icon-tianqi-yintian') + ' shake' //其他就摇动
 }
 
 //icon颜色
-var colorFilter = function(name){
+var colorFilter = function(name) {
   var colorName
-  match(name, function (item) {
+  match(name, function(item) {
     colorName = item.color
   })
   return colorName || '#dddddd'
 }
 
 //背景图
-var bgimageFilter = function(name){//
+var bgimageFilter = function(name) { //
   var bgName
-  match(name, function (item) {
+  match(name, function(item) {
     bgName = item.bgImg
   })
-  return bgName 
+  return bgName
 }
+
+//匹配指数图标
+var guideFilter = function(name) {
+  switch (name) {
+    case '紫外线指数':
+      return 'icon-ziwaixian'
+    case '减肥指数':
+      return ''
+    case '血糖指数':
+      return 'icon-1'
+    case '健臻·血糖指数':
+      return 'icon-1'
+    case '穿衣指数':
+      return 'icon-chuanyizhishu'
+    case '洗车指数':
+      return 'icon-xiche'
+    case '空气污染扩散指数':
+      return 'icon-kongqi'
+    default:
+      return ''
+
+  }
+}
+
+//匹配指数图标颜色
+var guidecolorFilter = function (name) {
+  switch (name) {
+    case '紫外线指数':
+      return '#de00ff'
+    case '减肥指数':
+      return ''
+    case '血糖指数':
+      return '#6ad6d2'
+    case '健臻·血糖指数':
+      return '#6ad6d2'
+    case '穿衣指数':
+      return '#d6221e'
+    case '洗车指数':
+      return '#f3ca7e'
+    case '空气污染扩散指数':
+      return '#00b367'
+    default:
+      return ''
+
+  }
+}
+
 module.exports = {
   filterTemp: filterTemp,
   dateFilter: dateFilter,
   iconFilter: iconFilter,
   colorFilter: colorFilter,
   bgimageFilter: bgimageFilter,
-  iconFilterActive: iconFilterActive
+  iconFilterActive: iconFilterActive,
+  guideFilter: guideFilter,
+  guidecolorFilter: guidecolorFilter
 }

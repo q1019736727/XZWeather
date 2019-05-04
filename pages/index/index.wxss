@@ -327,3 +327,15 @@
 .weekTemp-item icon {
   margin-left: 20px;
 }
+
+/*指数*/
+.container .guidWrapepr{
+  width: calc(100vw - 40px);
+  background: white;
+  margin: 15px auto;
+  box-shadow: 1px 1px 6px #dfe0e1;
+  border-radius: 6px;
+}
+.guidWrapepr icon{
+  font-size: 50rpx;
+}

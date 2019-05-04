@@ -16,6 +16,7 @@ Page({
     currentWeatherList: null,
     currentWeather: null,
     currentTimeList: [],
+    guideList:[],
     isLoading: false //是否在获取位置
   },
   //事件处理函数
@@ -88,6 +89,7 @@ Page({
         this.setData({
           currentWeatherList: res.data.data,
           currentWeather: res.data.data[0],
+          guideList: (res.data.data[0]).index,
           currentTimeList: timeL
         })
       })
