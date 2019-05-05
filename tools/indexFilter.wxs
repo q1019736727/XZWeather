@@ -61,7 +61,9 @@ var guideFilter = function(name) {
     case '紫外线指数':
       return 'icon-ziwaixian'
     case '减肥指数':
-      return ''
+      return 'icon-yundong'
+    case '</em><em></em><em></em><em>':
+      return 'icon-yundong'
     case '血糖指数':
       return 'icon-1'
     case '健臻·血糖指数':
@@ -84,7 +86,9 @@ var guidecolorFilter = function (name) {
     case '紫外线指数':
       return '#de00ff'
     case '减肥指数':
-      return ''
+      return '#e57e24'
+    case '</em><em></em><em></em><em>':
+      return '#e57e24'
     case '血糖指数':
       return '#6ad6d2'
     case '健臻·血糖指数':
@@ -100,6 +104,22 @@ var guidecolorFilter = function (name) {
 
   }
 }
+//过滤em空标题
+var filterTitle = function(name){
+  if (name === '</em><em></em><em></em><em>'){
+    return '减肥指数'
+  }else{
+    return name
+  }
+}
+//过滤level null数据
+var filterLevel = function(level,des){
+  if (level) {
+    return level
+  } else {
+    return des
+  }
+}
 
 module.exports = {
   filterTemp: filterTemp,
@@ -109,5 +129,7 @@ module.exports = {
   bgimageFilter: bgimageFilter,
   iconFilterActive: iconFilterActive,
   guideFilter: guideFilter,
-  guidecolorFilter: guidecolorFilter
+  guidecolorFilter: guidecolorFilter,
+  filterTitle: filterTitle,
+  filterLevel: filterLevel
 }

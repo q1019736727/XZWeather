@@ -329,13 +329,46 @@
 }
 
 /*指数*/
-.container .guidWrapepr{
+
+.container .guidWrapepr {
   width: calc(100vw - 40px);
   background: white;
   margin: 15px auto;
   box-shadow: 1px 1px 6px #dfe0e1;
   border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
-.guidWrapepr icon{
-  font-size: 50rpx;
+
+.guidWrapepr .guideItem {
+  width: 33.33%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  border: 0.5px solid #ededed;
+  box-sizing: border-box;
+}
+
+.guidWrapepr .guideItem icon {
+  font-size: 40rpx;
+  margin: 20rpx auto;
+}
+
+.guidWrapepr .guideItem text {
+  font-size: 24rpx;
+}
+
+.guidWrapepr .guideItem text:nth-child(3) {
+  margin: 18rpx auto;
+  font-size: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 90%;
+  text-align: center;
+  color: #777;
 }

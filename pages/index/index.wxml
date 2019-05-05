@@ -49,10 +49,10 @@
       </view>
     </view>
     <view class='guidWrapepr'>
-      <view wx:for='{{guideList}}' wx:key='{{index}}'>
+      <view class='guideItem' wx:for='{{guideList}}' wx:key='{{index}}'>
                 <icon class='iconfont {{filter.guideFilter(item.title)}}' style="color:{{filter.guidecolorFilter(item.title)}}"></icon>
-        <text>{{item.title}}</text>
-        <text>{{item.level}}</text>
+        <text>{{filter.filterTitle(item.title)}}</text>
+        <text>{{filter.filterLevel(item.level,item.desc)}}</text>
       </view>
     </view>
   </view>
