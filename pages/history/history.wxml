@@ -1,2 +1,6 @@
 <!--pages/history/history.wxml-->
-<text>pages/history/history.wxml</text>
+<view>
+  <view wx:for='{{cityList}}' wx:key='{{index}}'>
+    {{item}}
+  </view>
+</view>

@@ -63,9 +63,8 @@ Page({
     }
   },
   goCityList: function() {
-    wx.showToast({
-      title: '该功能正在开发中...',
-      icon:'none'
+    wx.navigateTo({
+      url: '../history/history',
     })
   },
   onShow: function() {

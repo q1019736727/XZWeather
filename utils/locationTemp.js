@@ -43,6 +43,15 @@ const getLocal = function (latitude,longitude,qqmapsdk) {
       },
       success: function (res) {
         let ad_info = res.result.ad_info
+        //将历史地址存入本地缓存中
+        let localStorageArr = wx.getStorageSync('CITY_LIST') || []
+        let addressName = ad_info.district || ad_info.city
+        let index = localStorageArr.indexOf(addressName)
+        if (index === -1){
+          localStorageArr.push(addressName)
+        }
+        wx.setStorageSync('CITY_LIST', localStorageArr)
+        //
         resolve(ad_info.district || ad_info.city)
       },
       fail: function (res) {
