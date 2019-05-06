@@ -17,7 +17,8 @@ Page({
     currentWeather: null,
     currentTimeList: [],
     guideList:[],
-    isLoading: false //是否在获取位置
+    isLoading: false, //是否在获取位置
+    isShowLocation:false
   },
   //事件处理函数
   bindViewTap: function() {
@@ -90,11 +91,16 @@ Page({
           currentWeatherList: res.data.data,
           currentWeather: res.data.data[0],
           guideList: (res.data.data[0]).index,
-          currentTimeList: timeL
+          currentTimeList: timeL,
+          isShowLocation: false
         })
       })
       this.setData({
         addressName
+      })
+    }).catch(error=>{
+      this.setData({
+        isShowLocation: true
       })
     })
   },

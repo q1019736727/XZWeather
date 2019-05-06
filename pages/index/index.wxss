@@ -345,8 +345,9 @@
 
 .guidWrapepr .guideItem {
   width: 33.33%;
+  height: 230rpx;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   border: 0.5px solid #ededed;
@@ -358,17 +359,23 @@
   margin: 20rpx auto;
 }
 
-.guidWrapepr .guideItem text {
+.guidWrapepr .guideItem text:nth-child(2) {
   font-size: 24rpx;
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
 }
 
 .guidWrapepr .guideItem text:nth-child(3) {
   margin: 18rpx auto;
   font-size: 20rpx;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   width: 90%;
   text-align: center;
   color: #777;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }

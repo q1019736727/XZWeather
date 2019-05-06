@@ -4,6 +4,7 @@
 <wxs src='../../tools/indexFilter.wxs' module="filter"></wxs>
 
 <view class="container">
+  <button wx:if='{{isShowLocation}}' open-type='openSetting' bindopensetting="getAddressWeather">重新定位</button>
   <view class='weatherTopWrapper'>
     <image src='../../imgs/{{filter.bgimageFilter(currentWeather.wea)}}'></image>
     <view class='location'>
@@ -29,7 +30,7 @@
 
   <view class='bottomPage'>
     <view class='nearTempCard'>
-      <text wx:if='{{currentWeather}}'>未来几小时温度</text>
+      <text wx:if='{{currentWeather}}'>未来12小时温度</text>
       <canvas canvas-id="canvas" id="canvas"></canvas>
       <view class='bottomtemp'>
         <label wx:for='{{currentTimeList}}' wx:key='idx'>
