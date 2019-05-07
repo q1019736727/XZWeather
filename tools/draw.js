@@ -100,10 +100,10 @@ const setDefaultColor = function(ctx, temp) {
      ctx.setStrokeStyle('#fba864')
   } else if (temp <= 25 && temp > 15) {
      ctx.setStrokeStyle('#8ddd70')
-  }else if (temp <= 15){
-     ctx.setStrokeStyle('#6b99f6')
+  } else if (temp <= 15 && temp > 5){
+    ctx.setStrokeStyle('#7acaff')
   }else{
-     ctx.setStrokeStyle('#fba864')
+    ctx.setStrokeStyle('#6487fc')
   }
 }
 const setTextColor = function (ctx, temp){
@@ -114,10 +114,10 @@ const setTextColor = function (ctx, temp){
     return ctx.setFillStyle('#fba864')
   } else if (temp <= 25 && temp > 15) {
     return ctx.setFillStyle('#8ddd70')
-  } else if (temp <= 15) {
-    return ctx.setFillStyle('#6b99f6')
+  } else if (temp <= 15 && temp > 5) {
+    return ctx.setFillStyle('#7acaff')
   } else {
-    return ctx.setFillStyle('#fba864')
+    return ctx.setFillStyle('#6487fc')
   }
 }
 

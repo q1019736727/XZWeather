@@ -24,12 +24,17 @@ Page({
   bindViewTap: function() {
 
   },
-  onLoad: function() {
+  onLoad: function(options) {
     getApp().setWatcher(this.data, this.watch); // 设置监听器
     // 腾讯地图实例化API核心类
     qqmapsdk = new QQMapWX({
       key: 'FVSBZ-SKL32-SSGUE-CTC7S-KELNE-43FKU'
     });
+    if (options.addressName){
+      this.getAddressWeather(options.addressName)
+    }else{
+      this.getAddressName()
+    }
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -59,48 +64,50 @@ Page({
   },
   cliclRefresh: function() {
     if (!this.data.isLoading) {
-      this.getAddressWeather()
+      this.getAddressName()
     }
   },
   goCityList: function() {
     wx.navigateTo({
-      url: '../history/history',
+      url: `../history/history?addressName=${this.data.addressName}`,
     })
   },
-  onShow: function() {
-    this.getAddressWeather()
-  },
-  getAddressWeather() {
+  //获取定位地址天气信息
+  getAddressName() {
     this.setData({
       isLoading: true
     })
     //获取位置和天气情况
     loactionTemp.getLocation(qqmapsdk).then(addressName => {
-      loactionTemp.getTemp(addressName).then(res => {
-        console.log(res)
-        this.setData({
-          isLoading: false
-        })
-        let timeL = (res.data.data[0]).hours.map(res => {
-          let time = res.day.slice(3, 6)
-          return time
-        })
-        timeL = timeL.splice(0, 6)
-        this.setData({
-          currentWeatherList: res.data.data,
-          currentWeather: res.data.data[0],
-          guideList: (res.data.data[0]).index,
-          currentTimeList: timeL,
-          isShowLocation: false
-        })
-      })
-      this.setData({
-        addressName
-      })
+      this.getAddressWeather(addressName)
     }).catch(error=>{
       this.setData({
         isShowLocation: true
       })
+    })
+  },
+  //获取指定位置天气信息
+  getAddressWeather(addressName){
+    loactionTemp.getTemp(addressName).then(res => {
+      console.log(res)
+      this.setData({
+        isLoading: false
+      })
+      let timeL = (res.data.data[0]).hours.map(res => {
+        let time = res.day.slice(3, 6)
+        return time
+      })
+      timeL = timeL.splice(0, 6)
+      this.setData({
+        currentWeatherList: res.data.data,
+        currentWeather: res.data.data[0],
+        guideList: (res.data.data[0]).index,
+        currentTimeList: timeL,
+        isShowLocation: false
+      })
+    })
+    this.setData({
+      addressName
     })
   },
   getUserInfo: function(e) {

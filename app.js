@@ -1,19 +1,6 @@
 //app.js
 App({
   onLaunch: function () {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
-
-    // let localStorageArr = wx.getStorageSync('CITY_LIST') || []
-    // let addressName = '中江县'
-    // let index = localStorageArr.indexOf(addressName)
-    // if (index === -1) {
-    //   localStorageArr.push(addressName)
-    // }
-    // wx.setStorageSync('CITY_LIST', localStorageArr)
 
     // 登录
     wx.login({

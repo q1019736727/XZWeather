@@ -4,4 +4,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #ededed;
+}
+.cityItem text{
+  margin-left: 15px;
+  font-size: 28rpx;
+}
+.cityItem icon{
+  margin-right: 15px;
 }

@@ -64,6 +64,8 @@ var guideFilter = function(name) {
       return 'icon-yundong'
     case '</em><em></em><em></em><em>':
       return 'icon-yundong'
+    case '</em><em>':
+      return 'icon-yundong'
     case '血糖指数':
       return 'icon-1'
     case '健臻·血糖指数':
@@ -89,6 +91,8 @@ var guidecolorFilter = function (name) {
       return '#e57e24'
     case '</em><em></em><em></em><em>':
       return '#e57e24'
+    case '</em><em>':
+      return '#e57e24'
     case '血糖指数':
       return '#6ad6d2'
     case '健臻·血糖指数':
@@ -106,7 +110,7 @@ var guidecolorFilter = function (name) {
 }
 //过滤em空标题
 var filterTitle = function(name){
-  if (name === '</em><em></em><em></em><em>'){
+  if (name === '</em><em></em><em></em><em>' || name === '</em><em>'){
     return '减肥指数'
   }else{
     return name

@@ -1,7 +1,7 @@
 <!--pages/history/history.wxml-->
 <view>
-  <view class='cityItem' wx:for='{{cityList}}' wx:key='{{index}}'>
+  <view class='cityItem' wx:for='{{cityList}}' wx:key='{{index}}' bindtap='clickAddress' data-index='{{index}}'>
     <text>{{item}}</text>
-    <icon class='iconfont icon-city'></icon>
+    <icon class='iconfont {{item === preAddressName ? "icon-city":""}}'></icon>
   </view>
 </view>
