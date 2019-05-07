@@ -1,10 +1,13 @@
 // pages/history/history.js
 Page({
   data: {
-    cityList: wx.getStorageSync('CITY_LIST') || []
+    cityList: null
   },
   onLoad: function (options) {
 
+    this.setData({
+      cityList:wx.getStorageSync('CITY_LIST')
+    })
   },
 
 })

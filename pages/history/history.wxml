@@ -1,6 +1,7 @@
 <!--pages/history/history.wxml-->
 <view>
-  <view wx:for='{{cityList}}' wx:key='{{index}}'>
-    {{item}}
+  <view class='cityItem' wx:for='{{cityList}}' wx:key='{{index}}'>
+    <text>{{item}}</text>
+    <icon class='iconfont icon-city'></icon>
   </view>
 </view>
