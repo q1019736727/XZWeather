@@ -1,4 +1,4 @@
-const weatherUrl = 'https://www.tianqiapi.com/api'
+const weatherUrl = 'https://www.tianqiapi.com/api/?version=v1'
 
 const Request = {
   currentWeather(addressName){
