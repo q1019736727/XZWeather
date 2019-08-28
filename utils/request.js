@@ -1,5 +1,6 @@
 const weatherUrl = 'https://www.tianqiapi.com/api/?version=v1'
-
+const app_secret = 'wGz6LaLr'
+const app_id = '44198862'
 const Request = {
   currentWeather(addressName){
     addressName = (addressName + '').substring(0, addressName.length-1)
@@ -7,7 +8,7 @@ const Request = {
       wx.request({
         url: weatherUrl,
         method: 'get',
-        data: { city: addressName },
+        data: { city: addressName, appid: app_id, appsecret: app_secret },
         success: (res) => {
           resolve(res)
         },
